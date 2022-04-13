@@ -1,39 +1,29 @@
-#include <vector>
-#include <string>
-#include <iostream>
 #include <fstream>
 
-struct Vertex{
-    Vertex() : d(__DBL_MAX__), pi(nullptr) {}
-    
-    void setd(double d){ this->d = d; }
-private:
-    double d;
-    Vertex* pi;
-};
+#include <bits/stdc++.h>
+#include "priority_queue.h"
+using namespace std;
 
-struct Graph{
-    Graph(){}
-    Graph(int size) : vertices(std::vector<Vertex>(size, Vertex())) {}
-private:
-    std::vector<Vertex> vertices;
-};
+void dijkstra(Graph& g){
 
-std::vector<std::string> readLines(std::string file){
-    std::ifstream srcFile(file);
-    std::string readLine;
-    std::vector<std::string> lines;
-
-    while(std::getline(srcFile, readLine))
-        lines.push_back(readLine);
-
-    srcFile.close();
-
-    return lines;
 }
 
 int main(int argc, char *argv[]){
-    std::vector<std::string> lines = readLines(argv[1]);
+    ifstream file(argv[1]);
+    Graph G;
+    vector<pair<string, string>> lines;
+    string vertexCount;
+    
+    getline(file, vertexCount);
+    lines = vector<pair<string, string>>(stoi(vertexCount));
 
+    for(int i = 0; i < stoi(vertexCount); i++){
+        getline(file, lines[i].first, ' ');
+        getline(file, lines[i].second);
+    }
+
+    file.close();
+
+    G = Graph(lines, argv[2]);    
     return 0;
 }
