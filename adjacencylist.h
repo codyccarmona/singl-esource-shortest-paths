@@ -3,7 +3,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/**             GRAPH NODE           */
 struct GraphNode{
     GraphNode(string i, string a, double e = __DBL_MAX__){
         id = i;
@@ -116,10 +115,9 @@ struct Graph{
                 break;
             }
         }
-        while(curr->getEstimate() != 0){
+        while((curr = curr->getPredecessor()) != nullptr){
             temp += curr->getId();
             temp += " ";
-            curr = curr->getPredecessor();
         }
         temp += srcNodeId;
         printf("%s\n", temp.c_str());
